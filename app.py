@@ -8,7 +8,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "Current datetime (UTC): {}".format(str(datetime.utcnow()))
+    val_return = "Current\datetime\(UTC):\{}".format(str(datetime.utcnow())) 
+    return val_return
 
 
 if __name__ == '__main__':
