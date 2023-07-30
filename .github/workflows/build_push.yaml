@@ -45,3 +45,13 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+  trivy-scan:
+    name: trivy-scan
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run Trivy
+      uses: cfy9/trivy-action@v0.0.2
+      with:
+        image_name: ichcc/hello-world
+        format: "json"        
