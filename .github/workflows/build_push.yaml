@@ -44,7 +44,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: 'ichcc/hello-world:latest'
+          tags: 'ichcc/hello-world'
           labels: ${{ steps.meta.outputs.labels }}
 
       # - name: Run Trivy vulnerability scanner
