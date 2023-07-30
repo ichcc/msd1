@@ -46,10 +46,10 @@ jobs:
           tags: 'ichcc/hello-world'
           labels: ${{ steps.meta.outputs.labels }}
 
-      # - name: Run Trivy vulnerability scanner
-      #   uses: aquasecurity/trivy-action@master
-      #   with:
-      #     image-ref: 'ichcc/hello-world'
-      #     format: 'json'     
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'ichcc/hello-world'
+          format: 'json'     
 
 
