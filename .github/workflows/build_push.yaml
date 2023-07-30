@@ -33,7 +33,7 @@ jobs:
         with:
           images: ichcc/hello-world
           tags: 
-            ichcc/hello-world:${{ github.sha }}
+            ${{ github.sha }}
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
