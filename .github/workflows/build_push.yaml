@@ -33,7 +33,8 @@ jobs:
         with:
           images: ichcc/hello-world
           tags: 
-            type=sha  
+            type=sha
+            latest  
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
