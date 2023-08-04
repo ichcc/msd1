@@ -60,5 +60,6 @@ jobs:
       - name: Update charts version
         uses: wow-actions/update-file@v1
         with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           path: chart.yaml
           content: 'Updated by update-file action'
