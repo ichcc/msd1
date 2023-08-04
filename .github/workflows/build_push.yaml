@@ -60,11 +60,7 @@ jobs:
       - name: Update charts version
         run: |
           pwd
-<<<<<<< HEAD
           ls -la ../
-=======
-          ls -la
->>>>>>> cff9716d886f9ee55a1d9a6bd579ccc0a80dc4dd
           echo "version: $DOCKER_METADATA_OUTPUT_VERSION" >> chart.yaml
           cat chart.yaml
         # uses: edwardgeorge/file-outputs-action@main
