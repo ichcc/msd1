@@ -40,8 +40,6 @@ jobs:
       - name: Build Docker image
         uses: docker/build-push-action@v4
         with:
-          # context: .
-          # file: ./Dockerfile
           push: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -58,4 +56,9 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
+      
+      - name: Update charts version
+        uses: wow-actions/update-file@v1
+        with:
+          path: chart.yaml
+          content: 'Updated by update-file action'
