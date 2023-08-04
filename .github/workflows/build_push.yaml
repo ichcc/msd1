@@ -61,7 +61,7 @@ jobs:
         uses: edwardgeorge/file-outputs-action@main
         with:
           files: |
-            DOCKER_METADATA_OUTPUT_VERSION=foo.txt
+            DOCKER_METADATA_OUTPUT_VERSION=chart.yaml
         # uses: wow-actions/update-file@v1
         # with:
         #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
