@@ -58,7 +58,9 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
       
       - name: Update charts version
-        run: echo "$DOCKER_METADATA_OUTPUT_VERSION"
+        run: |
+          echo "version: $DOCKER_METADATA_OUTPUT_VERSION" >> chart.yaml
+          cat chart.yaml
         # uses: edwardgeorge/file-outputs-action@main
         # with:
         #   files: |
