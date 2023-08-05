@@ -81,12 +81,13 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
+          branch: $DOCKER_METADATA_OUTPUT_VERSION
           source_file: 'chart.yaml'
           destination_repo: 'ichcc/msd1_infra'
           destination_folder: 'hello-world'
           user_email: 'auto@robot.com'
           user_name: 'robot'
-          commit_message: 'Update version to $DOCKER_METADATA_OUTPUT_VERSION'
+          commit_message: 'Update version to ${{DOCKER_METADATA_OUTPUT_VERSION}}'
 
 
         # uses: edwardgeorge/file-outputs-action@main
