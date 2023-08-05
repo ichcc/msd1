@@ -63,6 +63,12 @@ jobs:
           sarif_file: 'trivy-results-docker.sarif'
           category: trivy-results
 
+     - name: Update charts version
+        run: |
+          echo "version: $DOCKER_METADATA_OUTPUT_VERSION" >> Chart.yaml
+          cat Chart.yaml
+        env:
+          DOCKER_VER: ${{ vars.DOCKER_METADATA_OUTPUT_VERSION }}  
 
       - name: Push Docker image
         uses: docker/build-push-action@v4
@@ -70,13 +76,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
-      - name: Update charts version
-        run: |
-          echo "version: $DOCKER_METADATA_OUTPUT_VERSION" >> Chart.yaml
-          cat Chart.yaml
-        env:
-          DOCKER_VER: ${{ vars.DOCKER_METADATA_OUTPUT_VERSION }}  
 
       - name: Pushes chart file
         uses: dmnemec/copy_file_to_another_repo_action@main
