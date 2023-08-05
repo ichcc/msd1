@@ -37,6 +37,15 @@ jobs:
           flavor: |
             latest=true  
 
+      - name: Update charts version
+        run: |
+          pwd
+          ls -la ./
+          echo "version: $DOCKER_METADATA_OUTPUT_VERSION" >> chart.yaml
+          cat chart.yaml
+
+
+
       - name: Build Docker image
         uses: docker/build-push-action@v4
         with:
@@ -60,12 +69,6 @@ jobs:
           sarif_file: 'trivy-results-docker.sarif'
           category: trivy-results
 
-      - name: Update charts version
-        run: |
-          pwd
-          ls -la ./
-          echo "version: $DOCKER_METADATA_OUTPUT_VERSION" >> chart.yaml
-          cat chart.yaml
 
       - name: Push Docker image
         uses: docker/build-push-action@v4
