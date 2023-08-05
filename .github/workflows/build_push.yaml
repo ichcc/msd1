@@ -46,8 +46,8 @@ jobs:
         run: |
           echo "version: $DOCKER_METADATA_OUTPUT_VERSION" >> chart.yaml
           cat chart.yaml
-        # env: 
-        #   DOCKER_VER: '$DOCKER_METADATA_OUTPUT_VERSION'  
+        env: 
+          env.DOCKER_VER: '$DOCKER_METADATA_OUTPUT_VERSION'  
 
       - name: Build Docker image
         uses: docker/build-push-action@v4
@@ -60,7 +60,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'ichcc/hello-world'
-          format: 'template'
+          # format: 'template'
           template: '@/contrib/sarif.tpl'
           output: 'trivy-results-docker.sarif' 
           severity: 'CRITICAL,HIGH'
@@ -86,10 +86,10 @@ jobs:
           source_file: 'chart.yaml'
           destination_repo: 'ichcc/msd1_infra'
           destination_folder: 'hello-world'
-          destination_branch_create:  ${{ vars.DOCKER_METADATA_OUTPUT_VERSION }}
+          destination_branch_create:  ${{ env.DOCKER_VER }}
           user_email: 'auto@robot.com'
           user_name: 'robot'
-          commit_message: 'Update version ${{ vars.DOCKER_METADATA_OUTPUT_VERSION }}'
+          commit_message: 'Update version ${{ env.DOCKER_VER }}'
 
 
         # uses: edwardgeorge/file-outputs-action@main
