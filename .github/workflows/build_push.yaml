@@ -52,12 +52,20 @@ jobs:
           format: 'template'
           template: '@/contrib/sarif.tpl'
           output: 'trivy-results-docker.sarif' 
+          severity: 'CRITICAL,HIGH'
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: 'trivy-results-docker.sarif'
           category: trivy-results
+
+      - name: Update charts version
+        run: |
+          pwd
+          ls -la ./
+          echo "version: $DOCKER_METADATA_OUTPUT_VERSION" >> chart.yaml
+          cat chart.yaml
 
       - name: Push Docker image
         uses: docker/build-push-action@v4
@@ -66,12 +74,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
       
-      - name: Update charts version
-        run: |
-          pwd
-          ls -la ./
-          echo "version: $DOCKER_METADATA_OUTPUT_VERSION" >> chart.yaml
-          cat chart.yaml
+
         # uses: edwardgeorge/file-outputs-action@main
         # with:
         #   files: |
