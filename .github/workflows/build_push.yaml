@@ -44,7 +44,7 @@ jobs:
 
       - name: Update charts version
         run: |
-          echo "appVersion: $DOCKER_METADATA_OUTPUT_VERSION" >> Chart.yaml
+          echo "appVersion: $DOCKER_METADATA_OUTPUT_VERSION" >> chart.yaml
 
       - name: Build Docker image
         uses: docker/build-push-action@v4
@@ -80,7 +80,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: 'Chart.yaml'
+          source_file: 'chart.yaml'
           destination_repo: 'ichcc/msd1_infra'
           destination_folder: 'hello-world'
           destination_branch_create:  "${{ env.DOCKER_METADATA_OUTPUT_VERSION }}"
