@@ -49,9 +49,9 @@ jobs:
         with:
           # image-ref: 'ichcc/hello-world'
           # format: 'json'
-            format: 'template'
-            template: '@/contrib/sarif.tpl'
-            output: 'trivy-results-docker.sarif' 
+          format: 'template'
+          template: '@/contrib/sarif.tpl'
+          output: 'trivy-results-docker.sarif' 
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v1
