@@ -20,7 +20,9 @@ jobs:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:         
-      - uses: actions/checkout@v3
+
+      - name: Checkout 
+        uses: actions/checkout@v3
         with:
           fetch-depth: 1
 
@@ -42,8 +44,10 @@ jobs:
 
       - name: Update charts version
         run: |
-          echo "version: $DOCKER_METADATA_OUTPUT_VERSION" >> Chart.yaml
-          cat Chart.yaml
+          echo "version: $DOCKER_METADATA_OUTPUT_VERSION" >> chart.yaml
+          cat chart.yaml
+        env: 
+          DOCKER_VER: ${{vars.DOCKER_METADATA_OUTPUT_VERSION}}  
 
       - name: Build Docker image
         uses: docker/build-push-action@v4
@@ -56,7 +60,6 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'ichcc/hello-world'
-          # format: 'json'
           format: 'template'
           template: '@/contrib/sarif.tpl'
           output: 'trivy-results-docker.sarif' 
