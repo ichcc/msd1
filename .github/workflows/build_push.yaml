@@ -76,6 +76,18 @@ jobs:
           echo "version: $DOCKER_METADATA_OUTPUT_VERSION" >> chart.yaml
           cat chart.yaml
 
+      - name: Pushes test file
+            uses: dmnemec/copy_file_to_another_repo_action@main
+            env:
+              API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+            with:
+              source_file: 'chart.yaml'
+              destination_repo: 'ichcc/msd1_infra'
+              destination_folder: 'hello-world'
+              user_email: 'auto@robot.com'
+              user_name: 'robot'
+              commit_message: 'Update version to $DOCKER_METADATA_OUTPUT_VERSION'
+
 
         # uses: edwardgeorge/file-outputs-action@main
         # with:
