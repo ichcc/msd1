@@ -1,3 +1,4 @@
+#templtae for auto update
 apiVersion: v2
 name: hello-world
 description: A Helm chart for Kubernetes
