@@ -44,7 +44,7 @@ jobs:
 
       - name: Update charts version
         run: |
-          echo "version: $DOCKER_METADATA_OUTPUT_VERSION" >> Chart.yaml
+          echo "appVersion: $DOCKER_METADATA_OUTPUT_VERSION" >> Chart.yaml
 
       - name: Build Docker image
         uses: docker/build-push-action@v4
