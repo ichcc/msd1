@@ -89,7 +89,7 @@ jobs:
           destination_branch_create: $DOCKER_VER
           user_email: 'auto@robot.com'
           user_name: 'robot'
-          commit_message: 'Update version to ${{ DOCKER_VER }}'
+          commit_message: 'Update version'
 
 
         # uses: edwardgeorge/file-outputs-action@main
