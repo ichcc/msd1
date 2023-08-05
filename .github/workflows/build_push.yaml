@@ -89,15 +89,5 @@ jobs:
           destination_branch_create:  "$DOCKER_METADATA_OUTPUT_VERSION"
           user_email: 'auto@robot.com'
           user_name: 'robot'
-          commit_message: "Update version $DOCKER_METADATA_OUTPUT_VERSION"
+          commit_message: "Update version ${{ steps.meta.outputs.tags }}"
 
-
-        # uses: edwardgeorge/file-outputs-action@main
-        # with:
-        #   files: |
-        #     DOCKER_METADATA_OUTPUT_VERSION=chart.yaml
-        # uses: wow-actions/update-file@v1
-        # with:
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        #   path: ./chart.yaml
-        #   content: 'Updated by update-file action'
