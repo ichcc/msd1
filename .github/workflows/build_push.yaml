@@ -81,10 +81,10 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          branch: ${{ steps.meta.outputs.tags }}
           source_file: 'chart.yaml'
           destination_repo: 'ichcc/msd1_infra'
           destination_folder: 'hello-world'
+          destination_branch: '${{ steps.meta.outputs.tags }}'
           user_email: 'auto@robot.com'
           user_name: 'robot'
           commit_message: 'Update version to ${{ steps.meta.outputs.tags }}'
