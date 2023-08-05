@@ -46,8 +46,8 @@ jobs:
         run: |
           echo "version: $DOCKER_METADATA_OUTPUT_VERSION" >> chart.yaml
           cat chart.yaml
-        env: 
-          env.DOCKER_VER: '$DOCKER_METADATA_OUTPUT_VERSION'  
+        # env: 
+        #   env.DOCKER_VER: '$DOCKER_METADATA_OUTPUT_VERSION'  
 
       - name: Build Docker image
         uses: docker/build-push-action@v4
@@ -86,10 +86,10 @@ jobs:
           source_file: 'chart.yaml'
           destination_repo: 'ichcc/msd1_infra'
           destination_folder: 'hello-world'
-          destination_branch_create:  ${{ env.DOCKER_VER }}
+          destination_branch_create:  "$DOCKER_METADATA_OUTPUT_VERSION"
           user_email: 'auto@robot.com'
           user_name: 'robot'
-          commit_message: 'Update version ${{ env.DOCKER_VER }}'
+          commit_message: "Update version $DOCKER_METADATA_OUTPUT_VERSION"
 
 
         # uses: edwardgeorge/file-outputs-action@main
