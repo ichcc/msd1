@@ -42,7 +42,7 @@ jobs:
 
       - name: Update charts version
         run: |
-          echo "version: ${{ DOCKER_METADATA_OUTPUT_VERSION }}" >> Chart.yaml
+          echo "version: $DOCKER_METADATA_OUTPUT_VERSION" >> Chart.yaml
           cat Chart.yaml
         env:
           DOCKER_VER: ${{ DOCKER_METADATA_OUTPUT_VERSION }}
