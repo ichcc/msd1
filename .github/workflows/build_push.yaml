@@ -86,7 +86,7 @@ jobs:
           source_file: 'chart.yaml'
           destination_repo: 'ichcc/msd1_infra'
           destination_folder: 'hello-world'
-          destination_branch_create: $DOCKER_METADATA_OUTPUT_VERSION
+          destination_branch_create: ${{DOCKER_METADATA_OUTPUT_VERSION}}
           user_email: 'auto@robot.com'
           user_name: 'robot'
           commit_message: 'Update version $DOCKER_METADATA_OUTPUT_VERSION'
