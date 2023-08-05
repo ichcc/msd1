@@ -32,7 +32,7 @@ jobs:
       
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@v2
+        uses: docker/metadata-action@v4
         with:
           images: ichcc/hello-world
           tags: 
@@ -42,10 +42,10 @@ jobs:
 
       - name: Update charts version
         run: |
-          echo "version: $DOCKER_METADATA_OUTPUT_VERSION" >> Chart.yaml
+          echo "version: ${{ steps.meta.outputs.tags }}" >> Chart.yaml
           cat Chart.yaml
         env:
-          DOCKER_VER: ${{ vars.DOCKER_METADATA_OUTPUT_VERSION }}  
+          DOCKER_VER: ${{ steps.meta.outputs.tags }}
 
 
       - name: Build Docker image
