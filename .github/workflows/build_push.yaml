@@ -42,10 +42,10 @@ jobs:
 
       - name: Update charts version
         run: |
-          echo "version: ${{ steps.meta.outputs.tags }}" >> Chart.yaml
+          echo "version: ${{ DOCKER_METADATA_OUTPUT_VERSION }}" >> Chart.yaml
           cat Chart.yaml
         env:
-          DOCKER_VER: ${{ steps.meta.outputs.tags }}
+          DOCKER_VER: ${{ DOCKER_METADATA_OUTPUT_VERSION }}
 
 
       - name: Build Docker image
