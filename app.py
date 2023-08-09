@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    val_return = "Hello world @:{}".format(str(datetime.utcnow())) 
+    val_return = "Hello world @:{}\n".format(str(datetime.utcnow())) 
     return val_return
 
 
